@@ -47,21 +47,6 @@ export const axiosPosts = createAsyncThunk('posts/axiosPosts', async _ => {
    }
 })
 
-// export const axiosPostsId = createAsyncThunk<
-//    PostsListItem,
-//    string | number | undefined
-// >('posts/axiosPostsId', async id => {
-//    try {
-//       const { data } = await axios.get(
-//          `https://api.spaceflightnewsapi.net/v3/articles/${id}`
-//       )
-//       console.log(data)
-//       return data
-//    } catch (error) {
-//       return console.log(error)
-//    }
-// })
-
 const initialState: TPost = {
    items: [],
    status: Status.LOADING,
