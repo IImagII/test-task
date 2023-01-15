@@ -7,19 +7,39 @@ import {
    Link,
    Typography,
 } from '@mui/material'
-import React from 'react'
-import { PostsListItem } from '../store/Slice/postsSlice'
+import React, { useCallback } from 'react'
+
 import { useNavigate } from 'react-router-dom'
 import Box from '@mui/material/Box/Box'
 
-export const ListItem: React.FC<PostsListItem> = ({
+import { HightLight } from '../hooks/HightLight/HightLight'
+
+interface IListItem {
+   id: number | string
+   title: string
+   imageUrl: string
+   summary: string
+   publishedAt: string
+   debouncedSearchTerm: string
+}
+
+export const ListItem: React.FC<IListItem> = ({
    id,
    title,
    summary,
    imageUrl,
    publishedAt,
+   debouncedSearchTerm,
 }) => {
    const navigate = useNavigate()
+
+   //реализуем подсветку вводимого текста в поле Search
+   const lightText = useCallback(
+      (str: string) => {
+         return <HightLight filter={debouncedSearchTerm} str={str} />
+      },
+      [debouncedSearchTerm]
+   )
    return (
       <>
          <Grid item xs={12} md={4} sm={6}>
@@ -64,7 +84,7 @@ export const ListItem: React.FC<PostsListItem> = ({
                            marginTop: '24px',
                         }}
                      >
-                        {title}
+                        {lightText(title)}
                      </Typography>
                      <Typography
                         component='body'
@@ -77,7 +97,7 @@ export const ListItem: React.FC<PostsListItem> = ({
                            textDecoration: 'none',
                         }}
                      >
-                        {summary}
+                        {lightText(summary)}
                      </Typography>
                   </CardContent>
                   <CardActions>

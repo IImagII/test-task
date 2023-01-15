@@ -5,7 +5,6 @@ import { useAppDispatch, useAppSelector } from '../@types/hooks'
 import { axiosPosts } from '../store/Slice/postsSlice'
 import { SearchContext } from '../hooks/SearchProvider'
 import { useDebounce } from '../hooks/useDebounce'
-import styles from '././Search/Search.module.scss'
 
 export const List: React.FC = () => {
    const { items, status } = useAppSelector(state => state.posts) //через Redux берем значения
@@ -27,40 +26,26 @@ export const List: React.FC = () => {
       )
    })
 
-   const HightLight = (props: any) => {
-      const { filter, str } = props
-      if (!filter) {
-         return str
-      }
-      const regExt = new RegExp(filter, 'ig')
-      const matchValue = str.match(regExt)
-      if (matchValue) {
-         return str.split(regExt).map((item: any, i: any, arr: any) => {
-            if (i < arr.length - 1) {
-               const value = matchValue.shift()
-               return (
-                  <>
-                     {item}
-                     <span className={styles.hightlight}>{value}</span>
-                  </>
-               )
-            }
-            return item
-         })
-      }
-      return str
-   }
-
    const posts = filterPosts.map(posts => (
-      <ListItem {...posts} key={posts.id} />
+      <ListItem
+         id={posts.id}
+         title={posts.title}
+         summary={posts.summary}
+         imageUrl={posts.imageUrl}
+         publishedAt={posts.publishedAt}
+         key={posts.id}
+         debouncedSearchTerm={debouncedSearchTerm}
+      />
    ))
 
    return (
       <>
-         <Grid container rowSpacing={2}>
-            {status === 'loading'
-               ? 'Идет загрузка страницы подождите.....'
-               : posts}
+         <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+            {status === 'loading' ? (
+               <>Идет загрузка страницы подождите.....</>
+            ) : (
+               posts
+            )}
          </Grid>
       </>
    )

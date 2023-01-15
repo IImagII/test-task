@@ -67,21 +67,22 @@ export const OnePost: React.FC = () => {
                >
                   <Typography>{post.summary}</Typography>
                </Box>
+               <Box sx={{ marginTop: '70px' }}>
+                  <NavLink to={'/'}>
+                     <Link
+                        sx={{
+                           fontWeight: 700,
+                           fontSize: '16px',
+                           lineHeight: '150%',
+                           color: '#363636',
+                        }}
+                     >
+                        Back to homepage
+                     </Link>
+                  </NavLink>
+               </Box>
             </Box>
          </Container>
-         <NavLink to={'/'}>
-            <Link
-               sx={{
-                  fontWeight: 700,
-                  fontSize: '16px',
-                  lineHeight: '150%',
-                  color: '#363636',
-                  marginLeft: '240px',
-               }}
-            >
-               Back to homepage
-            </Link>
-         </NavLink>
       </>
    )
 }

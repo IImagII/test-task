@@ -10,8 +10,8 @@ export const Home: React.FC = () => {
    const { items } = useAppSelector(state => state.posts)
 
    return (
-      <div>
-         <Container sx={{ width: '1290px' }}>
+      <>
+         <Container sx={{ maxWidth: '1290px' }}>
             <Box
                sx={{
                   fontSize: '16px',
@@ -25,18 +25,16 @@ export const Home: React.FC = () => {
                Filter by keywords
             </Box>
 
-            <Box>
-               <Search />
-            </Box>
+            <Search />
+
             <Box
                sx={{ borderBottom: '1px solid #EAEAEA', marginBottom: '15px' }}
             >
                Result: {items.length}
             </Box>
-            <Box>
-               <List />
-            </Box>
+
+            <List />
          </Container>
-      </div>
+      </>
    )
 }

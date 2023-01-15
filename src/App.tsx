@@ -8,13 +8,11 @@ import { NotFound } from './pages/NotFound'
 
 function App() {
    return (
-      <>
-         <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/posts/:id' element={<OnePost />} />
-            <Route path='*' element={<NotFound />} />
-         </Routes>
-      </>
+      <Routes>
+         <Route path='/' element={<Home />} />
+         <Route path='/posts/:id' element={<OnePost />} />
+         <Route path='*' element={<NotFound />} />
+      </Routes>
    )
 }
 
