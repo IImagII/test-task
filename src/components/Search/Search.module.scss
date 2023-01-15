@@ -11,7 +11,7 @@
    }
 }
 .icon {
-   width: 22px;
+   max-width: 22px;
    height: 22px;
    opacity: 0.3;
    position: absolute;
@@ -22,18 +22,12 @@
    display: flex;
    position: relative;
    align-items: center;
-}
-.close {
-   position: absolute;
-   width: 24px;
-   height: 24px;
-   opacity: 0.3;
-   top: 15px;
-   left: 430px;
-
-   &:hover {
-      opacity: 1;
-      cursor: pointer;
-      color: #000;
+   @media (max-width: 1260px) {
+      left: 0;
+      margin: 20px 20px;
    }
+}
+
+input[placeholder] {
+   text-overflow: ellipsis;
 }

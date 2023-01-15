@@ -4,16 +4,8 @@ import { SearchContext } from '../../hooks/SearchProvider'
 
 export const Search: React.FC = () => {
    const { searchValue, setSearchValue } = React.useContext(SearchContext) //через хук берем значение с поля Search
-   const inputRef = React.useRef<HTMLInputElement>(null)
-
-   //реализуем автофокус и очистку строки при нажатии на Х
-   const addSearchValue = () => {
-      setSearchValue('')
-      inputRef.current?.focus()
-   }
 
    return (
-      
       <div className={styles.search}>
          {!searchValue && (
             <svg
@@ -31,25 +23,11 @@ export const Search: React.FC = () => {
 
          <input
             className={styles.root}
-            type='text'
+            type='search'
             onChange={e => setSearchValue(e.target.value)}
             value={searchValue}
             placeholder='The most successful IT companies in 2023'
-            ref={inputRef}
          />
-         {searchValue && (
-            <svg
-               className={styles.close}
-               onClick={() => addSearchValue()}
-               height='48'
-               viewBox='0 0 48 48'
-               width='48'
-               xmlns='http://www.w3.org/2000/svg'
-            >
-               <path d='M38 12.83l-2.83-2.83-11.17 11.17-11.17-11.17-2.83 2.83 11.17 11.17-11.17 11.17 2.83 2.83 11.17-11.17 11.17 11.17 2.83-2.83-11.17-11.17z' />
-               <path d='M0 0h48v48h-48z' fill='none' />
-            </svg>
-         )}
       </div>
    )
 }
