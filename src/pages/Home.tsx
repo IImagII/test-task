@@ -1,6 +1,7 @@
+import React from 'react'
+
 import { Container } from '@mui/material'
 import { Box } from '@mui/system'
-import React from 'react'
 import { List } from '../components/List'
 import { useAppSelector } from '../@types/hooks'
 import { Search } from '../components/Search/Search'

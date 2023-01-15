@@ -16,7 +16,7 @@
    opacity: 0.3;
    position: absolute;
    left: 10px;
-   top: 16px;
+   top: 18px;
 }
 .search {
    display: flex;
@@ -28,11 +28,15 @@
    width: 24px;
    height: 24px;
    opacity: 0.3;
-   top: 8px;
-   right: 10px;
+   top: 15px;
+   left: 430px;
+
    &:hover {
       opacity: 1;
       cursor: pointer;
       color: #000;
    }
+}
+.hightlight {
+   background: yellow;
 }

@@ -40,7 +40,7 @@ export const ListItem: React.FC<PostsListItem> = ({
                      width='400'
                      image={imageUrl}
                   />
-                  <CardContent sx={{ minHeight: '25em' }}>
+                  <CardContent sx={{ minHeight: '27em' }}>
                      <Typography
                         component='div'
                         sx={{

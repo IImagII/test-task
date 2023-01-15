@@ -1,15 +1,17 @@
-import { Box, Link } from '@mui/material'
 import React from 'react'
+import axios from 'axios'
+
+import { Box, Link } from '@mui/material'
 import { NavLink, useParams } from 'react-router-dom'
 import { PostsListItem } from '../store/Slice/postsSlice'
-import axios from 'axios'
 import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
 
 export const OnePost: React.FC = () => {
-   const { id } = useParams()
+   const { id } = useParams() //получаем параметры id
    const [post, setPost] = React.useState<PostsListItem>()
 
+   //Реализуем получение данных асинхронным запросом на сервер по конкретному id
    React.useEffect(() => {
       const post = async () => {
          try {
@@ -22,8 +24,9 @@ export const OnePost: React.FC = () => {
          }
       }
       post()
-   }, [])
+   }, [id])
 
+   //показываем пользователю если еще не подгризились наши посты
    if (!post) {
       return <>"Идет загрузка...."</>
    }
@@ -42,6 +45,11 @@ export const OnePost: React.FC = () => {
                   alignItems: 'center',
                }}
             >
+               <img
+                  src={post.imageUrl}
+                  alt={post.title}
+                  style={{ height: '400px', width: '700px', marginTop: '25px' }}
+               />
                <Typography
                   variant='h1'
                   sx={{
