@@ -1,20 +1,21 @@
 //Делаем рефакторинг кода для хука useContext()
 
-import React, { ReactNode } from 'react'
-import { createContext, useState } from 'react'
+import React from 'react'
 
 type TChildren = {
-   children: ReactNode
+   children: React.ReactNode
 }
 interface IContextProps {
    searchValue: string
    setSearchValue: (type: string) => void
 }
 
-export const SearchContext = createContext<IContextProps>({} as IContextProps)
+export const SearchContext = React.createContext<IContextProps>(
+   {} as IContextProps
+)
 
 export const SearchProvider: React.FC<TChildren> = ({ children }) => {
-   const [searchValue, setSearchValue] = useState<string>('')
+   const [searchValue, setSearchValue] = React.useState<string>('')
 
    return (
       <SearchContext.Provider value={{ searchValue, setSearchValue }}>

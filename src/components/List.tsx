@@ -1,5 +1,7 @@
-import { Grid } from '@mui/material'
+
 import React from 'react'
+
+import { Grid } from '@mui/material'
 import { ListItem } from './ListItem'
 import { useAppDispatch, useAppSelector } from '../@types/hooks'
 import { axiosPosts } from '../store/Slice/postsSlice'

@@ -1,3 +1,6 @@
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
+
 import {
    Card,
    CardActions,
@@ -7,11 +10,7 @@ import {
    Link,
    Typography,
 } from '@mui/material'
-import React, { useCallback } from 'react'
-
-import { useNavigate } from 'react-router-dom'
 import Box from '@mui/material/Box/Box'
-
 import { HightLight } from '../hooks/HightLight/HightLight'
 
 interface IListItem {
@@ -34,7 +33,7 @@ export const ListItem: React.FC<IListItem> = ({
    const navigate = useNavigate()
 
    //реализуем подсветку вводимого текста в поле Search
-   const lightText = useCallback(
+   const lightText = React.useCallback(
       (str: string) => {
          return <HightLight filter={debouncedSearchTerm} str={str} />
       },

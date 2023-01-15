@@ -1,6 +1,7 @@
 import React from 'react'
-import styles from './Search.module.scss'
+
 import { SearchContext } from '../../hooks/SearchProvider'
+import styles from './Search.module.scss'
 
 export const Search: React.FC = () => {
    const { searchValue, setSearchValue } = React.useContext(SearchContext) //через хук берем значение с поля Search
