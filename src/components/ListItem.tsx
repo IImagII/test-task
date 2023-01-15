@@ -59,7 +59,7 @@ export const ListItem: React.FC<IListItem> = ({
                      width='400'
                      image={imageUrl}
                   />
-                  <CardContent sx={{ minHeight: '27em' }}>
+                  <CardContent sx={{ minHeight: '20em' }}>
                      <Typography
                         component='div'
                         sx={{
@@ -96,7 +96,7 @@ export const ListItem: React.FC<IListItem> = ({
                            textDecoration: 'none',
                         }}
                      >
-                        {lightText(summary)}
+                        {lightText(summary.slice(0, 100))}
                      </Typography>
                   </CardContent>
                   <CardActions>
