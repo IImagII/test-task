@@ -26,13 +26,13 @@ export const OnePost: React.FC = () => {
       post()
    }, [id])
 
-   //показываем пользователю если еще не подгризились наши посты
+   //показываем пользователю если еще не подгрузился наш пост
    if (!post) {
       return <>"Идет загрузка...."</>
    }
    return (
       <>
-         <Container sx={{ marginBottom: '20px' }}>
+         <Container>
             <Box
                sx={{
                   maxWidth: '1290px',
@@ -48,7 +48,12 @@ export const OnePost: React.FC = () => {
                <img
                   src={post.imageUrl}
                   alt={post.title}
-                  style={{ height: '400px', width: '700px', marginTop: '25px' }}
+                  style={{
+                     height: '400px',
+                     width: '700px',
+                     marginTop: '25px',
+                     maxWidth: '100%',
+                  }}
                />
                <Typography
                   variant='h1'
@@ -60,13 +65,15 @@ export const OnePost: React.FC = () => {
                >
                   {post.title}
                </Typography>
-               <Box
+
+               <Typography
                   sx={{
                      maxWidth: '1000px',
                   }}
                >
-                  <Typography>{post.summary}</Typography>
-               </Box>
+                  {post.summary}
+               </Typography>
+
                <Box sx={{ marginTop: '70px' }}>
                   <NavLink to={'/'}>
                      <Link
