@@ -96,7 +96,7 @@ export const ListItem: React.FC<IListItem> = ({
                            textDecoration: 'none',
                         }}
                      >
-                        {lightText(summary.slice(0, 100))}
+                        {lightText(summary.slice(0, 100) + '...')}
                      </Typography>
                   </CardContent>
                   <CardActions>

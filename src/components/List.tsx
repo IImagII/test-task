@@ -1,4 +1,3 @@
-
 import React from 'react'
 
 import { Grid } from '@mui/material'
@@ -21,12 +20,22 @@ export const List: React.FC = () => {
    }, [dispatch])
 
    //Реализация поиска
-   const filterPosts = items.filter(item => {
-      return (
-         item.title.toLowerCase().includes(debouncedSearchTerm.toLowerCase()) ||
-         item.summary.toLowerCase().includes(debouncedSearchTerm.toLowerCase())
-      )
-   })
+   const filterPosts = React.useMemo(() => {
+      if (!debouncedSearchTerm) {
+         return items
+      }
+
+      return items.filter(item => {
+         return (
+            item.title
+               .toLowerCase()
+               .includes(debouncedSearchTerm.toLowerCase()) ||
+            item.summary
+               .toLowerCase()
+               .includes(debouncedSearchTerm.toLowerCase())
+         )
+      })
+   }, [debouncedSearchTerm, items])
 
    const posts = filterPosts.map(posts => (
       <ListItem

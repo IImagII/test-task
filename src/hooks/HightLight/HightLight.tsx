@@ -5,9 +5,11 @@ import styles from './HightLight.module.scss'
 
 export const HightLight = (props: any) => {
    const { filter, str } = props
+
    if (!filter) {
       return str
    }
+
    const regExt = new RegExp(filter, 'ig')
    const matchValue = str.match(regExt)
 
